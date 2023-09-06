@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       body{
+            background-color: #f3ff58 ;
+        }
+        .img-container{
+            width: 60%;
+            min-height: 80vh;
+            background: url(https://source.unsplash.com/1024x980/?camera-nikon ) center/cover no-repeat;
+           border: 0.5rem solid #FFF700;
+           position: relative;
+           margin: 4rem auto;
+           box-shadow: 10px 10px 35px rgb(0,0,0,0.6);
+        }
+        .btn-left{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background-color: #3b117e;
+            color : #fff;
+            transform: translate(-50%,-50%);
+            border: 0.2rem solid #3cbff8;
+            font-size: 1.5rem;
+            padding: 15px;
+            cursor: pointer;
+        }
+        .btn-right{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            background-color: #3b117e;
+            color : #fff;
+            transform: translate(50%,-50%);
+            border: 0.2rem solid #3cbff8;
+            font-size: 1.5rem;
+            padding: 15px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .img-container {
+                padding-top: 20px;
+                width: 90%;
+                min-height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container">
+        <a class="btn btn-left"><i class="fa fa-caret-left" aria-hidden="true"></i></i>
+        </a>
+        <a class="btn btn-right"><i class="fa fa-caret-right" aria-hidden="true"></i></i>
+        </a>
+    </div>
+    <script>
+        (function(){
+            const pictures={
+                1: 'https://source.unsplash.com/1024x980/?bmw',
+                2: 'https://source.unsplash.com/1024x980/?lamborghini',
+                3: 'https://source.unsplash.com/1024x980/?ferarri',
+                4: 'https://source.unsplash.com/1024x980/?audi',
+                5: 'https://source.unsplash.com/1024x980/?toyota-supra'
+            };
+            const buttons= document.querySelectorAll('.btn');
+            const imgDiv= document.querySelector('.img-container');
+            let counter=1;
+            buttons.forEach(function (button){
+                button.addEventListener('click',function(e){
+                    if(button.classList.contains('btn-left')){
+                        counter--;
+                        if(counter==0){
+                            counter=5;
+                        }
+                        imgDiv.style.background = `url('${pictures[counter]}') center/cover no-repeat`; 
+                    }  if(button.classList.contains('btn-right')){
+                        counter++;
+                        if(counter==5){
+                            counter=1;
+                        }
+                        imgDiv.style.background = `url('${pictures[counter]}') center/cover no-repeat`;  
+                    }
+                })
+            })
+        })();
+    </script>
+</body>
+</html>
